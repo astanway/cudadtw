@@ -6,18 +6,19 @@ INCLUDE=./include
 VERBOSE=-lineinfo --ptxas-options=-v
 VERBOSE=
 
-all: GPU-DTW GPU-LDTW GPU-ED 
+all: clean GPU-DTW GPU-LDTW GPU-ED
+
+clean:
+	-rm bin/*
 
 GPU-DTW: GPU-dtw.cu $(INCLUDE)/cdtw.cuh $(BOILERPLATE)
-	$(NVCC) $(OPT) $(ARCH) GPU-dtw.cu -o GPU-DTW $(VERBOSE)
+	$(NVCC) $(OPT) $(ARCH) GPU-dtw.cu -o bin/GPU-DTW $(VERBOSE)
 
 GPU-LDTW: GPU-ldtw.cu $(INCLUDE)/ldtw.cuh $(BOILERPLATE)
-	$(NVCC) $(OPT) $(ARCH) GPU-ldtw.cu -o GPU-LDTW $(VERBOSE)
-
+	$(NVCC) $(OPT) $(ARCH) GPU-ldtw.cu -o bin/GPU-LDTW $(VERBOSE)
 
 GPU-ED: GPU-ed.cu $(INCLUDE)/ed.cuh $(BOILERPLATE)
-	$(NVCC) $(OPT) $(ARCH) GPU-ed.cu -o GPU-ED -lcufft $(VERBOSE)
-
+	$(NVCC) $(OPT) $(ARCH) GPU-ed.cu -o bin/GPU-ED -lcufft $(VERBOSE)
 
 
 # you can find the files in the test folder

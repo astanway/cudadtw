@@ -20,5 +20,5 @@
 *.cpp~
 *.py~
 *.pyc
-
-
+*.swp
+*.bin
