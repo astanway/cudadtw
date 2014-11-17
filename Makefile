@@ -1,5 +1,5 @@
 NVCC= nvcc
-ARCH= -arch=sm_35
+ARCH= -arch=sm_30
 OPT= -O3
 
 INCLUDE=./include
